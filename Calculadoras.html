@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://lnassutti.neocities.org/modulo5/mod5.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Calculadoras</title>
+	<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+
+
+  <script type="text/javascript">
+  	
+$(function(){
+
+
+$("#borrar").on("click", function() {
+
+$("#in2").val(''); 
+});
+
+$("#1").on("click", function() {
+
+var valor= $("#in2").val();	
+var resultado =Math.pow(valor,2);
+$("#in2").val(resultado);
+
+});
+
+
+$("#2").on("click", function() {
+
+var valor= $("#in2").val();	
+var resultado =(1/valor).toPrecision(5);
+$("#in2").val(resultado);
+
+});
+
+$("#3").on("click", function() {
+
+var valor= $("#in2").val();	
+var resultado =Math.sqrt(valor).toPrecision(5);
+$("#in2").val(resultado);
+
+});
+
+
+$("#4").on("click", function() {
+
+var valor= $("#in2").val();	
+if(valor>0){
+resultado=Math.floor(valor);
+
+}else{ resultado= -Math.ceil(valor);}
+$("#in2").val(resultado);
+
+});
+
+$("#5").on("click", function() {
+
+var valor= $("#in2").val();	
+var resultado =Math.pow(2,valor);
+$("#in2").val(resultado);
+
+});
+
+$("#6").on("click", function() {
+
+var valor= $("#in2").val();	
+var resultado =1;
+var valorIni= valor;
+
+if (valor == 0){
+	resultado=1;
+}else{ 
+	while(valor>1){
+
+		resultado= valor*resultado;
+		valor--;
+	}//cierro while
+}//cierro else
+
+
+$("#in2").val(resultado);
+
+});
+
+
+
+
+
+
+
+
+$("#mas").on("click", function() {
+
+var valor1= $("#in2").val();	
+$("#in2").val(valor1+"+");
+
+});
+
+$("#menos").on("click", function() {
+
+var valor1= $("#in2").val();	
+$("#in2").val(valor1+"-");
+
+});
+
+$("#por").on("click", function() {
+
+var valor1= $("#in2").val();	
+$("#in2").val(valor1+"*");
+
+});
+
+$("#divido").on("click", function() {
+
+var valor1= $("#in2").val();	
+$("#in2").val(valor1+"/");
+
+});
+
+
+$("#elevado").on("click", function() {
+
+var valor1= $("#in2").val();	
+$("#in2").val(valor1+" ^ ");
+
+});
+
+$("#igual").on("click", function() {
+
+var valor= $("#in2").val();	
+var resultado="";
+var corte;
+var operador="";
+var cadena1="";
+var cadena2="";
+var cadena11;
+var cadena22;
+
+
+for(var i = 0; i<valor.length; i++){
+
+if (valor[i] === "+" || valor[i] === "-" ||valor[i] === "*" ||valor[i] === "/" || valor[i] === "^"  ){
+
+corte=i;
+
+operador=valor[i];
+};
+};
+
+for(var s = 0; s<corte; s++){
+
+	cadena1=cadena1+valor[s]
+};
+
+for(var w = corte+1; w<valor.length; w++){
+
+	cadena2=cadena2+valor[w]
+};
+
+cadena11=parseInt(cadena1);
+cadena22=parseInt(cadena2);
+
+if(operador === "+"){
+resultado= cadena11 + cadena22
+};
+
+if(operador === "-"){
+resultado= cadena11 - cadena22
+};
+
+if(operador === "*"){
+resultado= cadena11 * cadena22
+};
+
+if(operador === "/"){
+resultado= cadena11 / cadena22
+};
+
+if(operador === "^"){
+resultado= Math.pow(cadena11,cadena22);
+};
+
+$("#in2").val(resultado);
+
+});
+
+
+
+
+
+$("#tres1").on("click", function() {
+
+var valor= $("#in2").val();	
+var resultado=0;
+var string1=[];
+
+string1= valor.split(",");
+
+for(var i =0; i<valor.length; i++){
+resultado= resultado+ (+valor[i]);
+}
+$("#in2").val(resultado);
+
+});
+
+$("#tres2").on("click", function() {
+
+var valor= $("#in2").val();	
+var resultado=1;
+
+for(var i =0; i<valor.length; i++){
+resultado= resultado* (+valor[i]);
+}
+$("#in2").val(resultado);
+
+});
+
+});
+
+  </script>
+<style type="text/css">
+	
+
+.calculadora{
+background-color: 	#FF8C00;
+border-radius: 5px;
+border-style: solid;
+border-color: black;
+padding: 15px;
+width: 200px;
+height: auto;
+}
+
+input{
+margin: 5px auto;
+height: 20px;
+border-radius: 5px;
+border-style: solid;
+border-color: black;
+border-width: 3px;
+display: flex;
+flex-wrap: wrap;
+flex-grow: 1;
+
+}
+
+.botones{
+
+
+display: flex;
+flex-wrap: wrap;
+margin: auto;
+}
+
+button{
+
+	background-color: #8FBC8F;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    margin: 10px;
+    display: block;
+    flex-grow: 1;
+	
+}
+</style>
+</head>
+<body>
+<br>
+<h1>"Buenos días, bienvenido a la calculadora de &lt; Lucia Nassutti &gt; "</h1>
+
+<h2>Calculadora 1</h2>
+<br>
+<p>(Ingresar los números con teclado)</p>
+<p></p>
+<div class="calculadora">
+<input type="text" id="in2">
+
+	
+<div class="botones">
+<button id="1">x<sup>2</sup></button>
+<button id="2">1/x</button>
+<button id="3">sqrt(x)</button>
+<button id="4">parte_entera(x)</button>
+<button id="5">2^n</button>
+<button id="6"> n!</button>
+
+<button id="mas"> + </button>
+<button id="menos"> - </button>
+<button id="por"> * </button>
+<button id="divido"> / </button>
+<button id="elevado">x<sup>y</sup></button>
+
+<button id="igual"> = </button>
+
+<button id="borrar">C</button>
+
+
+<button id="tres1"> sumatorio(x)</button>
+<button id="tres2"> producto(x)</button>
+</div>
+</div>
+
+
+</body></html>
